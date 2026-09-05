@@ -31,6 +31,7 @@
         Apuntá la cámara al QR del ticket.<br>
         Al leerlo volverás automáticamente a la aplicación de entrega.
       </div>
+      <button id="startBtn" type="button" style="margin-top:16px">📷 ACTIVAR CÁMARA</button>
       <div id="reader"></div>
       <div id="error" class="bad"></div>
     </div>
@@ -51,23 +52,43 @@
     window.location.href=returnUrl+sep+'scan='+encodeURIComponent(code);
   }
 
-  try{
-    var qr=new Html5Qrcode('reader');
+  var qr=null;
 
-    qr.start(
-      {facingMode:'environment'},
-      {fps:10,qrbox:{width:260,height:260}},
-      function(decodedText){
-        qr.stop().then(function(){goBack(decodedText)}).catch(function(){goBack(decodedText)});
-      },
-      function(){}
-    ).catch(function(err){
-      document.getElementById('error').textContent=
-        'No se pudo abrir la cámara. Verificá que el navegador tenga permiso para usarla.';
-    });
-  }catch(e){
-    document.getElementById('error').textContent='No se pudo iniciar el lector QR.';
-  }
+  document.getElementById('startBtn').onclick=function(){
+    var btn=document.getElementById('startBtn');
+    var error=document.getElementById('error');
+    error.textContent='';
+    btn.disabled=true;
+    btn.textContent='ABRIENDO CÁMARA...';
+
+    try{
+      qr=new Html5Qrcode('reader');
+
+      qr.start(
+        {facingMode:'environment'},
+        {fps:10,qrbox:{width:260,height:260}},
+        function(decodedText){
+          var back=returnUrl+(returnUrl.indexOf('?')>=0?'&':'?')+'scan='+encodeURIComponent(decodedText);
+          qr.stop()
+            .then(function(){window.location.replace(back)})
+            .catch(function(){window.location.replace(back)});
+        },
+        function(){}
+      ).then(function(){
+        btn.style.display='none';
+      }).catch(function(err){
+        btn.disabled=false;
+        btn.textContent='📷 ACTIVAR CÁMARA';
+        error.innerHTML=
+          'No se pudo abrir la cámara.<br><br>'+
+          'Asegurate de estar viendo <b>unionsunbasq.github.io</b> en la barra del navegador y habilitá el permiso de Cámara para este sitio.';
+      });
+    }catch(e){
+      btn.disabled=false;
+      btn.textContent='📷 ACTIVAR CÁMARA';
+      error.textContent='No se pudo iniciar el lector QR.';
+    }
+  };
 })();
 </script>
 </body>
