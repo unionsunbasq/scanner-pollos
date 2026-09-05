@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Venta de Pollos - Instructivo para Delegados</title>
+  <meta name="theme-color" content="#008F3C" />
+  <style>
+    :root{
+      --green:#008F3C;
+      --green-dark:#0b5c2a;
+      --green-soft:#eaf7ef;
+      --yellow:#ffe082;
+      --red-soft:#fdecec;
+      --bg:#f4f7f5;
+      --text:#18221b;
+      --muted:#627166;
+      --border:#d9e3db;
+      --card:#ffffff;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial, Helvetica, sans-serif}
+    body{line-height:1.45}
+    .wrap{max-width:760px;margin:0 auto;padding:16px 14px 42px}
+    .hero{
+      background:linear-gradient(135deg,var(--green) 0%, #12a851 100%);
+      color:#fff;border-radius:24px;padding:18px 16px;box-shadow:var(--shadow);
+    }
+    .hero-top{display:flex;gap:14px;align-items:center}
+    .logo-circle{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .hero h1{font-size:28px;line-height:1.05;margin:0 0 6px}
+    .hero p{margin:0;color:rgba(255,255,255,.92);font-size:14px}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.18);padding:7px 10px;border-radius:999px;font-size:12px;font-weight:bold}
+    .section{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .section h2{margin:0 0 10px;font-size:20px;color:var(--green-dark)}
+    .muted{color:var(--muted)}
+    .info{display:flex;gap:12px;align-items:flex-start;background:var(--green-soft);border:1px solid #c7e4d0;border-radius:14px;padding:12px 13px;margin-top:10px}
+    .warn{background:#fff7df;border-color:#f0d47e}
+    .phone{background:#fff;border:1px solid var(--border);border-radius:26px;padding:10px;width:100%;max-width:280px;box-shadow:var(--shadow);margin:12px auto 4px}
+    .phone-screen{background:linear-gradient(180deg,#f7fbf8 0%, #ffffff 100%);border:1px solid var(--border);border-radius:18px;padding:12px}
+    .phone-notch{width:80px;height:6px;border-radius:999px;background:#d9dfdb;margin:0 auto 10px}
+    .mini-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .mini-title{font-size:14px;font-weight:bold;color:var(--green-dark)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .mini-kpi{border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff}
+    .mini-kpi b{display:block;font-size:20px;color:var(--green)}
+    .mini-kpi span{font-size:11px;color:var(--muted)}
+    .player-card{margin-top:8px;border:1px solid var(--border);border-radius:14px;padding:10px;background:#fff}
+    .player-card.yellow{background:#ffe082}
+    .player-card.red{background:#fff2f2}
+    .player-name{font-weight:bold}
+    .stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .stat{font-size:11px;border-radius:999px;padding:4px 7px;background:#f1f5f2;border:1px solid var(--border)}
+    .steps{display:grid;gap:10px}
+    .step{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--border);border-radius:14px;padding:12px;background:#fff}
+    .step-num{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;flex:0 0 auto}
+    .step h3{margin:0 0 5px;font-size:16px;color:var(--green-dark)}
+    .step p{margin:0;color:var(--text);font-size:14px}
+    .login-cards{display:grid;gap:10px}
+    .login-card{border:1px solid var(--border);border-radius:16px;padding:12px;background:#fff}
+    .login-label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:bold}
+    .login-value{font-size:17px;font-weight:bold;margin-top:4px}
+    .list{padding-left:20px;margin:8px 0 0}
+    .list li{margin:6px 0}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border-radius:999px;background:#f0f5f1;border:1px solid var(--border);font-size:12px;font-weight:bold}
+    .cta{background:var(--green-dark);color:#fff;border-radius:20px;padding:16px}
+    .cta h2{color:#fff;margin:0 0 10px}
+    .ticket-demo{max-width:320px;margin:12px auto 0;background:#fff;border:1px dashed #b9c5bc;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+    .ticket-head{background:linear-gradient(135deg,var(--green) 0%, #12a851 100%);color:#fff;padding:14px 14px 12px;text-align:center}
+    .ticket-head h3{margin:0;font-size:18px;line-height:1.1}
+    .ticket-head .sub{font-size:11px;opacity:.95;margin-top:4px}
+    .ticket-body{padding:14px}
+    .ticket-line{font-size:13px;margin:6px 0}
+    .ticket-line strong{color:var(--green-dark)}
+    .qr-box{width:132px;height:132px;margin:12px auto;border:8px solid #fff;box-shadow:0 0 0 1px #d7e1da inset;background:
+      linear-gradient(90deg,#111 10px,transparent 10px) 0 0/22px 22px,
+      linear-gradient(#111 10px,transparent 10px) 0 0/22px 22px,
+      linear-gradient(90deg,transparent 12px,#111 12px,#111 18px,transparent 18px) 0 0/22px 22px,
+      linear-gradient(transparent 12px,#111 12px,#111 18px,transparent 18px) 0 0/22px 22px,
+      #fff;
+      border-radius:8px}
+    .ticket-foot{border-top:1px dashed #cdd7cf;padding-top:10px;margin-top:10px;text-align:center;font-size:12px;color:var(--green-dark);font-weight:bold}
+    .ticket-thanks{margin-top:8px;font-size:14px;color:var(--green-dark);font-weight:bold;text-align:center}
+    .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
+    .small{font-size:12px}
+    svg{display:block}
+    @media (min-width:680px){
+      .login-cards{grid-template-columns:1fr 1fr}
+      .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-top">
+        <div class="logo-circle" aria-hidden="true">
+          <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="31" fill="rgba(255,255,255,0.12)"/>
+            <path d="M17 21C17 17.7 19.7 15 23 15C25 15 26.8 16 27.9 17.6C28.6 17.2 29.4 17 30.3 17C33.2 17 35.5 19.3 35.5 22.2C35.5 23 35.3 23.8 35 24.4L42.8 32.2C44 31.6 45.4 31.3 46.9 31.3C51.8 31.3 55.8 35.3 55.8 40.2C55.8 45.1 51.8 49.1 46.9 49.1C42 49.1 38 45.1 38 40.2C38 38.7 38.4 37.2 39.1 36L31.2 28.1C30.4 28.4 29.6 28.6 28.7 28.6C26.8 28.6 25.1 27.8 23.8 26.6C22.7 27.6 21.3 28.1 19.8 28.1C16.6 28.1 14 25.5 14 22.3C14 21.8 14.1 21.4 14.2 21H17Z" fill="#fff"/>
+            <path d="M42.6 33.6L29.1 20.1C27.5 18.5 24.8 18.5 23.2 20.1C21.6 21.7 21.6 24.4 23.2 26L36.7 39.5L42.6 33.6Z" fill="#FDB14D"/>
+            <path d="M43.4 33L52.2 24.3" stroke="#FFF8E8" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="53.6" cy="22.9" r="4.3" fill="#FFF8E8"/>
+            <circle cx="49.5" cy="27" r="4.3" fill="#FFF8E8"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Venta de Pollos</h1>
+          <p><strong>Mini instructivo para delegados</strong><br>Diseñado para leer desde el celular.</p>
+        </div>
+      </div>
+      <div class="badge-row">
+        <div class="badge">📱 App simple y rápida</div>
+        <div class="badge">👥 Cada delegado ve sus categorías</div>
+        <div class="badge">🎟️ 1 ticket por cada pollo cobrado</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>1. Ingreso</h2>
+      <p class="muted">Cada delegado recibe sus datos de acceso en forma particular. Una vez dentro de la app, la aplicación muestra solamente la categoría o categorías que tiene asignadas.</p>
+      <div class="info">
+        <div>👥</div>
+        <div>
+          <strong>Vista personalizada:</strong> cada delegado ve únicamente la información de su/s categoría/s, mientras que los administradores tienen una vista general y acceso a funciones especiales.
+        </div>
+      </div>
+      <div class="info warn">
+        <div>🔒</div>
+        <div>
+          Los datos de acceso se comparten en privado, por lo que no se incluyen en este instructivo.
+        </div>
+      </div>
+    </div>
+
+    <div class="section two-col">
+      <div>
+        <h2>2. Pantalla Inicio / Resumen</h2>
+        <p>Al ingresar van a encontrar un <strong>Resumen</strong> con los principales datos de su categoría:</p>
+        <div class="pill-row" style="margin-top:10px">
+          <span class="pill">👥 Cantidad de jugadores</span>
+          <span class="pill">🍗 Vendidos</span>
+          <span class="pill">✅ Cobrados</span>
+          <span class="pill">⏳ Pend. de cobro</span>
+          <span class="pill">📦 Entregados</span>
+          <span class="pill">🚚 Pollos no entregados</span>
+          <span class="pill">🚫 No vendidos</span>
+          <span class="pill">💵 Ganancia mínima</span>
+        </div>
+        <div class="info" style="margin-top:12px">
+          <div>👉</div>
+          <div>
+            <strong>Importante:</strong> todas las tarjetas del resumen se pueden tocar. Por ejemplo, si presionan <strong>Pend. de cobro</strong>, la app los lleva a <strong>Jugadores</strong> mostrando solamente los chicos con cobros pendientes.
+          </div>
+        </div>
+      </div>
+
+      <div class="phone" aria-label="Vista ilustrativa del resumen de la app">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="mini-head">
+            <div class="mini-title">Resumen</div>
+            <div class="small muted">U13 / U15</div>
+          </div>
+          <div class="grid2">
+            <div class="mini-kpi"><b>18</b><span>Jugadores</span></div>
+            <div class="mini-kpi"><b>29</b><span>Vendidos</span></div>
+            <div class="mini-kpi"><b>24</b><span>Cobrados</span></div>
+            <div class="mini-kpi"><b>5</b><span>Pend. cobro</span></div>
+            <div class="mini-kpi"><b>12</b><span>Entregados</span></div>
+            <div class="mini-kpi"><b>17</b><span>No entregados</span></div>
+            <div class="mini-kpi"><b>7</b><span>No vendidos</span></div>
+            <div class="mini-kpi"><b>3</b><span>Gan. mínima</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section two-col">
+      <div>
+        <h2>3. Pantalla Jugadores</h2>
+        <p>En <strong>Jugadores</strong> pueden buscar por:</p>
+        <ul class="list">
+          <li>nombre del jugador;</li>
+          <li>parte del nombre;</li>
+          <li>nombre del tutor.</li>
+        </ul>
+        <p>En cada jugador van a ver sus indicadores:</p>
+        <div class="pill-row" style="margin-top:8px">
+          <span class="pill">🍗 Vendidos</span>
+          <span class="pill">✅ Cobrados</span>
+          <span class="pill">⏳ Pend. cobro</span>
+          <span class="pill">📦 Entregados</span>
+          <span class="pill">🚫 No vendidos</span>
+          <span class="pill">💵 Gan. mínima</span>
+        </div>
+        <div class="info warn" style="margin-top:12px">
+          <div>🎨</div>
+          <div>
+            Si un jugador tiene pollos cobrados pendientes de registrar, la tarjeta puede verse en <strong>amarillo</strong>. Si tiene <strong>no vendidos</strong>, puede verse en <strong>rojo suave</strong> para destacarlo.
+          </div>
+        </div>
+      </div>
+
+      <div class="phone" aria-label="Ejemplo de tarjeta de jugador">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="player-card yellow">
+            <div class="player-name">Juan Pérez</div>
+            <div class="small muted">U13 · Tutor 1: Pamela · Tutor 2: Diego</div>
+            <div class="stats">
+              <span class="stat">🍗 2 vendidos</span>
+              <span class="stat">✅ 1 cobrado</span>
+              <span class="stat">⏳ 1 pend.</span>
+              <span class="stat">📦 0 entregados</span>
+              <span class="stat">🚫 0 no vendidos</span>
+              <span class="stat">💵 0 gan. mín.</span>
+            </div>
+          </div>
+          <div class="player-card red">
+            <div class="player-name">Lucas Gómez</div>
+            <div class="small muted">U15 · Tutor 1: Ana · Tutor 2: Carlos</div>
+            <div class="stats">
+              <span class="stat">🍗 0 vendidos</span>
+              <span class="stat">✅ 0 cobrados</span>
+              <span class="stat">📦 0 entregados</span>
+              <span class="stat">🚫 2 no vendidos</span>
+              <span class="stat">💵 0 gan. mín.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>4. ¿Qué puede hacer el delegado?</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>+ Venta</h3>
+            <p>Registrar una venta indicando la <strong>cantidad de pollos</strong>. También se puede cargar un <strong>comprador</strong> de manera opcional.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Cobro en el momento o después</h3>
+            <p>Si la venta ya fue cobrada, se puede marcar en ese mismo momento y elegir <strong>Transferencia</strong> o <strong>Efectivo</strong>. Si queda pendiente, después se registra desde el jugador.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Ganancia mínima</h3>
+            <p>Si un jugador no cubre la venta mínima, se puede registrar la <strong>ganancia mínima</strong> desde su tarjeta.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Tickets</h3>
+            <p>Cada pollo cobrado genera <strong>un ticket individual con QR</strong>. Desde <strong>Tickets</strong> se puede abrir, ver y compartir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section two-col">
+      <div>
+        <h2>5. Tickets y entrega</h2>
+        <ul class="list">
+          <li>Se genera <strong>un ticket por cada pollo cobrado</strong>.</li>
+          <li>El delegado comparte el ticket con el deportista.</li>
+          <li>El deportista se lo reenvía al comprador.</li>
+          <li>El día de la entrega, el comprador presenta el <strong>QR</strong>.</li>
+          <li>Los administradores escanean y registran la <strong>entrega del pollo</strong>.</li>
+        </ul>
+        <div class="info" style="margin-top:12px">
+          <div>🎟️</div>
+          <div>
+            Si un ticket ya fue usado, el sistema lo avisa. Solamente los administradores pueden registrar una excepción, dejando observación.
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-demo" aria-label="Ejemplo ilustrativo de ticket con QR">
+        <div class="ticket-head">
+          <h3>VENTA DE POLLOS</h3>
+          <div class="sub">BÁSQUET FORMATIVO MASCULINO</div>
+          <div class="sub">UNIÓN DE SUNCHALES</div>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-line"><strong>Ticket:</strong> POLLO-000123</div>
+          <div class="ticket-line"><strong>Vendedor:</strong> Juan Pérez (U13)</div>
+          <div class="ticket-line"><strong>Entrega:</strong> 18/09/2026 · 20:30 a 21:30</div>
+          <div class="qr-box" aria-hidden="true"></div>
+          <div class="ticket-foot">Presentar este ticket al momento del retiro</div>
+          <div class="ticket-thanks">MUCHAS GRACIAS POR SU COLABORACIÓN</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>6. Correcciones</h2>
+      <p>Si hay un error, <strong>los delegados no tienen que borrar ni modificar registros por su cuenta</strong>.</p>
+      <div class="info warn">
+        <div>🛠️</div>
+        <div>
+          <strong>Administradores:</strong> Sergio, Sape y Sebastián.<br>
+          Si hay que <strong>cancelar un pollo, un pago, una venta, una ganancia mínima</strong> o hacer una corrección similar, avisen a cualquiera de nosotros y lo corregimos desde la app.
+        </div>
+      </div>
+    </div>
+
+    <div class="cta section" style="margin-top:16px">
+      <h2>En resumen</h2>
+      <ul class="list" style="margin-top:0;color:#fff">
+        <li>Cada delegado ve sólo sus categorías.</li>
+        <li>Desde <strong>Resumen</strong> pueden navegar directo a los jugadores filtrados.</li>
+        <li>Desde <strong>Jugadores</strong> registran ventas, cobros, ganancia mínima y tickets.</li>
+        <li>Los administradores nos ocupamos de las correcciones y de la entrega con QR.</li>
+      </ul>
+      <p style="margin:12px 0 0;color:#eaf6ee"><strong>Ante cualquier duda o error, avisen.</strong></p>
+    </div>
+
+    <div class="footer">
+      Venta de Pollos · Básquet Formativo Masculino · Unión de Sunchales
+    </div>
+  </div>
+</body>
+</html>
