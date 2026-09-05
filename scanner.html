@@ -29,7 +29,7 @@
       <h1>Escanear ticket</h1>
       <div class="muted">
         Apuntá la cámara al QR del ticket.<br>
-        Al leerlo volverás automáticamente a la aplicación de entrega.
+        Al leerlo, esta pestaña se cerrará y volverás automáticamente a la aplicación de entrega.
       </div>
       <button id="startBtn" type="button" style="margin-top:16px">📷 ACTIVAR CÁMARA</button>
       <div id="reader"></div>
@@ -68,10 +68,33 @@
         {facingMode:'environment'},
         {fps:10,qrbox:{width:260,height:260}},
         function(decodedText){
-          var back=returnUrl+(returnUrl.indexOf('?')>=0?'&':'?')+'scan='+encodeURIComponent(decodedText);
+          function finish(){
+            if(window.opener && !window.opener.closed){
+              try{
+                window.opener.postMessage({
+                  type:'VENTA_POLLOS_QR',
+                  code:decodedText
+                },'*');
+
+                try{window.opener.focus()}catch(e){}
+
+                setTimeout(function(){
+                  try{window.close()}catch(e){}
+                },180);
+                return;
+              }catch(e){}
+            }
+
+            var back=returnUrl+
+              (returnUrl.indexOf('?')>=0?'&':'?')+
+              'scan='+encodeURIComponent(decodedText);
+
+            window.location.replace(back);
+          }
+
           qr.stop()
-            .then(function(){window.location.replace(back)})
-            .catch(function(){window.location.replace(back)});
+            .then(finish)
+            .catch(finish);
         },
         function(){}
       ).then(function(){
